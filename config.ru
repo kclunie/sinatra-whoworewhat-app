@@ -7,5 +7,5 @@ end
 use Rack::MethodOverride
 #allows us to send patch and delete requests 
 
-#mount other controllers here with use
+#mount other controllers here with "use"
 run ApplicationController
