@@ -8,4 +8,5 @@ use Rack::MethodOverride
 #allows us to send patch and delete requests 
 
 #mount other controllers here with "use"
+use UsersController
 run ApplicationController
