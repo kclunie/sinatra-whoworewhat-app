@@ -18,4 +18,13 @@ class UsersController < ApplicationController
     redirect "/login"
   end
   
+  get '/signup' do 
+    
+  end
+  
+  get '/users/:id' do
+    
+  end
+  
+  
 end
