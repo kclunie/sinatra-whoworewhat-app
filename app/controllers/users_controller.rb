@@ -6,8 +6,16 @@ class UsersController < ApplicationController
   end
   
   #receive login form 
-  post 'login' do 
-    
+  post '/login' do 
+    #find user 
+    @user = User.find_by(email: params[:email])
+    #authenticate user 
+    if @user.authenticate(params[:password])
+    #create user session 
+    session[:user_id] = @user.id
+    redirect "users/#{@user.id}"
+  else 
+    redirect "/login"
   end
   
 end
