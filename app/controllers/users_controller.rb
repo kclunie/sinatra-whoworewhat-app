@@ -17,8 +17,13 @@ class UsersController < ApplicationController
   else 
     redirect "/login"
   end
+end
   
   get '/signup' do 
+    erb :signup 
+  end
+  
+  post '/users' do
     
   end
   
