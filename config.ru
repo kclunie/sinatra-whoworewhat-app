@@ -9,4 +9,5 @@ use Rack::MethodOverride
 
 #mount other controllers here with "use"
 use UsersController
+use OutfitEntriesController
 run ApplicationController
