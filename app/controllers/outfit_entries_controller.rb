@@ -16,7 +16,7 @@ class OutfitEntriesController < ApplicationController
     end 
     if params[:content] != ""
       # create a new entry
-      @outfit_entry = OutfitEntry.create(content: params[:content], user_id: current_user.id, title: params[:title])
+      @outfit_entry = OutfitEntry.create(content: params[:content], user_id: current_user.id)
       redirect "/outfit_entries/#{@outfit_entry.id}"
     else 
       redirect '/outfit_entries/new'
