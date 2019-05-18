@@ -24,7 +24,13 @@ end
   end
   
   post '/users' do
-    
+    if params[:name] != "" && params[:email] != "" && params[:password] != ""
+      @user = User.create(params)
+      session[:user_id] = @user.id 
+      redirect "/users/#{@user.id}"
+    else
+      redirect '/signup'
+    end
   end
   
   get '/users/:id' do
