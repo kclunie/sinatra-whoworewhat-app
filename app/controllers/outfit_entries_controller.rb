@@ -25,8 +25,40 @@ class OutfitEntriesController < ApplicationController
 
   # show route for an outfit entry
   get '/outfit_entries/:id' do
-    @outfit_entry = OutfitEntry.find(params[:id])
+    set_outfit_entry
     erb :'/outfit_entries/show'
+  end
+
+# This route should send us to outfit_entries/edit.erb, which will
+  # render an edit form
+  get '/outfit_entries/:id/edit' do
+    set_outfit_entry
+    if logged_in?
+      if @outfit_entry.user == current_user
+      erb :'/outfit_entries/edit'
+    else
+      redirect "users/#{current_user.id}"
+    end
+  else 
+    redirect '/'
+  end
+
+  patch '/outfit_entries/:id' do
+    set_outfit_entry
+    if logged_in?
+      if @outfit_entry.user == current_user
+        @outfit_entry.update(content: params[:content])
+        redirect "/outfit_entries/#{@outfit_entry.id}"
+      else
+        redirect "users/#{current_user.id}"
+    end
+  end
+
+
+  private
+  
+  def set_outfit_entry
+    @outfit_entry = OutfitEntry.find(params[:id])
   end
 
 end

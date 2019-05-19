@@ -1,0 +1,9 @@
+
+EDIT PAGE FOR A OUTFIT ENTRY
+
+<form class="" action="/outfit_entries/<%= @outfit_entry.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="content">Content:</label>
+  <textarea name="content" style="width:auto; height:auto;"><%= @outfit_entry.content %></textarea>
+  <input type="submit" name="" value="Edit Entry">
+</form>
