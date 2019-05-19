@@ -1,6 +1,13 @@
 <p><%= @outfit_entry.content %></p>
+<p>Created by: <%= @outfit_entry.user.name %></p>
+<p>created on <%= @outfit_entry.formatted_created_at %></p>
 
-Edit Link
-<a href="/outfit_entries/<%= @outfit_entry.id %>/edit">Edit Entry</a>
 
-Delete Link
+<% if authorized_to_edit?(@outfit_entry) %>
+  <a href="/outfit_entries/<%= @outfit_entry.id %>/edit">Edit Entry</a>
+  <br><br>
+  <form class="" action="/outfit_entries/<%= @outfit_entry.id %>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" name="" value="Delete this Entry">
+  </form>
+<% end %>
