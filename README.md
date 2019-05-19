@@ -1,16 +1,20 @@
-Sinatra WhoWoreWhat App
+## Sinatra WhoWoreWhat App
 
 A simple WhoWoreWhat app that allows users to log in, sign up, and create outfit entries. Users can also edit and delete their own entries.
 
-Getting Started
+## Getting Started
 
 To run this app, clone the repo and run bundle install. Then run shotgun to fire up a server.
 
-Authors
+## Contributing
+
+Feel free to contribute. Please fork, clone, and submit a PR if you like.
+
+## Authors
 
 &copy; 2019 by [Kristen Clunie](https://github.com/kclunie)
 
-License
+## License
 
 This project is licensed under the MIT License:
 
