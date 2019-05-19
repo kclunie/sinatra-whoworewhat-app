@@ -52,7 +52,7 @@ end
   patch '/outfit_entries/:id' do
     set_outfit_entry
     if logged_in?
-      if @outfit_entry.user == current_user
+      if @outfit_entry.user == current_user && params[:content] != ""
         @outfit_entry.update(content: params[:content])
         redirect "/outfit_entries/#{@outfit_entry.id}"
       else
