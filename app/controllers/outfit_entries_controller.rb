@@ -42,6 +42,7 @@ class OutfitEntriesController < ApplicationController
   else 
     redirect '/'
   end
+end
 
   patch '/outfit_entries/:id' do
     set_outfit_entry
@@ -51,6 +52,9 @@ class OutfitEntriesController < ApplicationController
         redirect "/outfit_entries/#{@outfit_entry.id}"
       else
         redirect "users/#{current_user.id}"
+      end
+    else
+      redirect '/'
     end
   end
 
