@@ -39,7 +39,7 @@ class OutfitEntriesController < ApplicationController
   get '/outfit_entries/:id/edit' do
     set_outfit_entry
     if logged_in?
-      if @outfit_entry.user == current_user
+      if authorized_to_edit?(@outfit_entry)
       erb :'/outfit_entries/edit'
     else
       redirect "users/#{current_user.id}"
