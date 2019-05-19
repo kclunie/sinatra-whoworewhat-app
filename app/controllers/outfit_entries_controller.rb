@@ -63,6 +63,16 @@ end
     end
   end
 
+  delete '/outfit_entries/:id' do
+    set_outfit_entry
+    if authorized_to_edit?(@outfit_entry)
+      @outfit_entry.destroy
+      #flash[:message] = "Successfully deleted that entry."
+      redirect '/outfit_entries'
+    else
+      redirect '/outfit_entries'
+    end
+  end
 
   private
   

@@ -1,6 +1,5 @@
 <p><%= @outfit_entry.content %></p>
 <p>Created by: <%= @outfit_entry.user.name %></p>
-<p>created on <%= @outfit_entry.formatted_created_at %></p>
 
 
 <% if authorized_to_edit?(@outfit_entry) %>
