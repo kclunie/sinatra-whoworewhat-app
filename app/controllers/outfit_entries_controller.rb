@@ -1,5 +1,10 @@
-
 class OutfitEntriesController < ApplicationController
+
+  #show all entries 
+   get '/outfit_entries' do
+    @outfit_entries = OutfitEntry.all
+    erb :'Outfit_entries/index'
+  end
 
   # get outfit_entries/new to render a form to create new entry
   get '/outfit_entries/new' do
