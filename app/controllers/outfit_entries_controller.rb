@@ -56,6 +56,7 @@ end
     if logged_in?
       if @outfit_entry.user == current_user && params[:content] != ""
         @outfit_entry.update(content: params[:content])
+        flash[:message] = "Entry successfully updated."
         redirect "/outfit_entries/#{@outfit_entry.id}"
       else
         redirect "users/#{current_user.id}"
@@ -69,7 +70,7 @@ end
     set_outfit_entry
     if authorized_to_edit?(@outfit_entry)
       @outfit_entry.destroy
-      #flash[:message] = "Successfully deleted that entry."
+      flash[:message] = "Successfully deleted entry."
       redirect '/outfit_entries'
     else
       redirect '/outfit_entries'
