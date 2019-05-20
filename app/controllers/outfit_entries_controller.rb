@@ -21,9 +21,11 @@ class OutfitEntriesController < ApplicationController
     end 
     if params[:content] != ""
       # create a new entry
+      flash[:message] = "Outfit entry successfull!"
       @outfit_entry = OutfitEntry.create(content: params[:content], user_id: current_user.id)
       redirect "/outfit_entries/#{@outfit_entry.id}"
     else 
+      flash[:message] = "Please add your outfit entry."
       redirect '/outfit_entries/new'
     end
   end
