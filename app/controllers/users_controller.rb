@@ -9,16 +9,16 @@ class UsersController < ApplicationController
   post '/login' do 
     #find user 
     @user = User.find_by(email: params[:email])
-    #authenticate user 
-    if @user && @user.authenticate(params[:password])
-    #create user session 
-    session[:user_id] = @user.id
-    redirect "users/#{@user.id}"
-  else
-    flash[:message] = "Your credentials are invalid. Please sign up or try again"
-    redirect "/login"
+      #authenticate user 
+      if @user && @user.authenticate(params[:password])
+        #create user session 
+        session[:user_id] = @user.id
+        redirect "users/#{@user.id}"
+      else
+        flash[:message] = "Your credentials are invalid. Please sign up or try again"
+        redirect "/login"
+      end
   end
-end
   
   get '/signup' do 
     erb :signup 

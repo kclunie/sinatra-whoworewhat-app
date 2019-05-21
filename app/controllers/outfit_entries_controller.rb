@@ -1,7 +1,7 @@
 class OutfitEntriesController < ApplicationController
 
   #show all entries 
-   get '/outfit_entries' do
+  get '/outfit_entries' do
     @outfit_entries = OutfitEntry.all
     erb :'outfit_entries/index'
   end
@@ -42,14 +42,14 @@ class OutfitEntriesController < ApplicationController
     set_outfit_entry
     if logged_in?
       if authorized_to_edit?(@outfit_entry)
-      erb :'/outfit_entries/edit'
-    else
-      redirect "users/#{current_user.id}"
+        erb :'/outfit_entries/edit'
+      else
+        redirect "users/#{current_user.id}"
+      end
+    else 
+      redirect '/'
     end
-  else 
-    redirect '/'
   end
-end
 
   patch '/outfit_entries/:id' do
     set_outfit_entry
