@@ -3,8 +3,10 @@
 <h3>Email: </h3>
 <h4><%= @user.email %></h4>
 
-added this code <h4><% @user.outfit_entries.each do |outfitentry|%></h4>
-<p><%= user.outfitentry %></p>
-<% end %>
+<br>
 
-
+<ul>
+<h4><% @user.outfit_entries.each do |entry|%></h4>
+<h4><%= entry.content %></h4>
+<h4> <% end %> </h4>
+</ul>
