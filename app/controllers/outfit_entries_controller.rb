@@ -13,12 +13,10 @@ class OutfitEntriesController < ApplicationController
 
   # post outfit_entries to create a new entry
   post '/outfit_entries' do
+    redirect_if_not_logged_in
     # I want to create a new outfit entry and save it to the DB
-    # I also only want to create an outfit entry if a user is logged in
+    # I only want to create an outfit entry if a user is logged in
     # I only want to save the entry if it has some content
-    if !logged_in?
-      redirect '/'
-    end 
     if params[:content] != ""
       # create a new entry
       flash[:message] = "Outfit entry successfull!"
@@ -39,21 +37,18 @@ class OutfitEntriesController < ApplicationController
 # This route should send us to outfit_entries/edit.erb, which will
   # render an edit form
   get '/outfit_entries/:id/edit' do
+    redirect_if_not_logged_in
     set_outfit_entry
-    if logged_in?
       if authorized_to_edit?(@outfit_entry)
         erb :'/outfit_entries/edit'
       else
         redirect "users/#{current_user.id}"
       end
-    else 
-      redirect '/'
-    end
   end
 
   patch '/outfit_entries/:id' do
+    redirect_if_not_logged_in
     set_outfit_entry
-    if logged_in?
       if @outfit_entry.user == current_user && params[:content] != ""
         @outfit_entry.update(content: params[:content])
         flash[:message] = "Entry successfully updated."
@@ -61,9 +56,6 @@ class OutfitEntriesController < ApplicationController
       else
         redirect "users/#{current_user.id}"
       end
-    else
-      redirect '/'
-    end
   end
 
   delete '/outfit_entries/:id' do
