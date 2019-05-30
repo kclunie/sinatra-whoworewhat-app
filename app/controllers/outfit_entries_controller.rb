@@ -14,9 +14,9 @@ class OutfitEntriesController < ApplicationController
   # post outfit_entries to create a new entry
   post '/outfit_entries' do
     redirect_if_not_logged_in
-    # I want to create a new outfit entry and save it to the DB
-    # I only want to create an outfit entry if a user is logged in
-    # I only want to save the entry if it has some content
+    # create a new outfit entry and save it to the DB
+    # create an outfit entry if a user is logged in
+    # only save the entry if it has some content
     if params[:content] != ""
       # create a new entry
       flash[:message] = "Outfit entry successfull!"
