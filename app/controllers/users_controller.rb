@@ -24,6 +24,11 @@ class UsersController < ApplicationController
     erb :signup 
   end
   
+  get '/users' do
+    @users = User.all
+    erb :'/users/index'
+  end
+  
   post '/users' do
     if params[:name] != "" && params[:email] != "" && params[:password] != "" && !User.find_by(email: params[:email])
       @user = User.create(params)

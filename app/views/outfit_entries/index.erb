@@ -1,7 +1,9 @@
-ALL OUTFIT ENTRIES
+<h2>ALL OUTFIT ENTRIES</h2>
+
 <% @outfit_entries.each do |outfit_entry| %>
   <h4><a href="/outfit_entries/<%= outfit_entry.id %>"><%= outfit_entry.created_at %></a></h4>
   <p><%= outfit_entry.content %></p>
-  <p>By <%= outfit_entry.user.name %></p>
+  <p>By <a href="/users/<%= outfit_entry.user.id %>"><%= outfit_entry.user.name %></a></p>
   <br><br>
 <% end %>
+

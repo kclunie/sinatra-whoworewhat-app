@@ -1,0 +1,8 @@
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <a href="/users/<%= user.id %>"><%= user.name %></a>
+      - Posts: <%= user.outfit_entries.count %>
+    </li>
+  <% end %>
+</ul>
