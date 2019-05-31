@@ -10,6 +10,15 @@ class OutfitEntriesController < ApplicationController
   get '/outfit_entries/new' do
     erb :'/outfit_entries/new'
   end
+  
+  get '/outfit_entries/search' do 
+    erb :"/outfit_entries/search"
+  end
+  
+  get '/outfit_entries/search_results' do 
+    @outfit_entries = OutfitEntry.all.select{|outfit_entry| outfit_entry.content.downcase.include? params[:content].downcase}
+    erb :'/outfit_entries/index'
+  end
 
   # post outfit_entries to create a new entry
   post '/outfit_entries' do
@@ -68,6 +77,8 @@ class OutfitEntriesController < ApplicationController
       redirect '/outfit_entries'
     end
   end
+
+
 
   private
   
